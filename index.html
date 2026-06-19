@@ -40,7 +40,7 @@
             height: auto;
         }
 
-        /* Posisi Nama Tamu presisi di dalam kotak gambar 1000017154.png */
+        /* Posisi Nama Tamu presisi di dalam kotak gambar */
         .guest-name-overlay {
             position: absolute;
             top: 69.5%; 
@@ -99,7 +99,7 @@
 <body>
 
     <div class="invitation-container">
-        <!-- Memanggil gambar cover.png yang sudah di-upload ke GitHub -->
+        <!-- Memanggil gambar cover.png -->
         <img src="cover.png" class="bg-image" alt="Undangan Tasyakuran Khitan">
 
         <div class="guest-name-overlay">
@@ -109,7 +109,7 @@
         <button class="btn-buka" onclick="bukaUndanganWithMusic()">BUKA</button>
     </div>
 
-    <!-- Memanggil file lagu.mp3 yang sudah di-upload ke GitHub -->
+    <!-- Memanggil file lagu.mp3 -->
     <audio id="background-music" loop>
         <source src="lagu.mp3" type="audio/mp3">
     </audio>
@@ -127,161 +127,7 @@
 
             setTimeout(function() {
                 window.location.href = "https://liaarga.my.canva.site/revisi/page-2";
-            }, 400); // Memberikan sedikit jeda agar lagu sempat terpicu sistem browser HP
-        }
-    </script>
-</body>
-</html>
-        .cover-wrapper {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            width: 100%;
-            max-width: 450px;
-            height: 100vh;
-            padding: 60px 30px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        /* Bingkai Klasik di Tepi Layar */
-        .border-decor {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            right: 20px;
-            bottom: 20px;
-            border: 1px solid #dfcfb7;
-            pointer-events: none;
-        }
-        .border-decor::after {
-            content: "";
-            position: absolute;
-            top: 4px;
-            left: 4px;
-            right: 4px;
-            bottom: 4px;
-            border: 1px solid #c5b297;
-            opacity: 0.5;
-        }
-
-        /* Header Tasyakuran */
-        .title-tasyakuran {
-            font-family: 'Cinzel', serif;
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            color: #bfa37a;
-            font-weight: 700;
-            margin-top: 20px;
-        }
-
-        /* Font Gristesy Style - Dibuat Jauh Lebih Besar & Anggun */
-        .main-title {
-            font-family: 'Great Vibes', cursive;
-            font-size: 4.8rem;
-            color: #5c4d3c;
-            line-height: 1;
-            margin-top: -10px;
-            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
-        }
-
-        /* Area Informasi Tamu */
-        .recipient-section {
-            width: 100%;
-            margin-top: auto;
-            margin-bottom: auto;
-            padding: 0 10px;
-        }
-
-        .recipient-text {
-            font-size: 0.85rem;
-            color: #8a7e71;
-            margin-bottom: 12px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        /* Nama Tamu dengan Aksen Box Transparan Elegan */
-        .recipient-name-box {
-            display: inline-block;
-            padding: 12px 30px;
-            border-bottom: 1px dashed #c5b297;
-            margin-bottom: 10px;
-        }
-
-        .recipient-name {
-            font-size: 1.6rem;
-            font-weight: 600;
-            color: #382f26;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        /* Tombol Buka Undangan Premium dengan Animasi */
-        .btn-open {
-            display: inline-block;
-            padding: 16px 45px;
-            background: linear-gradient(135deg, #8c785e 0%, #6e5c45 100%);
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            border-radius: 30px;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 6px 20px rgba(110, 92, 69, 0.3);
-            transition: all 0.3s ease;
-            margin-bottom: 20px;
-            animation: pulseAnimation 2s infinite;
-        }
-
-        .btn-open:hover {
-            background: linear-gradient(135deg, #a18b6f 0%, #8c785e 100%);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(110, 92, 69, 0.5);
-        }
-
-        /* Animasi Tombol Berdenyut Halus */
-        @keyframes pulseAnimation {
-            0% { transform: scale(1); box-shadow: 0 6px 20px rgba(110, 92, 69, 0.3); }
-            50% { transform: scale(1.03); box-shadow: 0 6px 25px rgba(110, 92, 69, 0.5); }
-            100% { transform: scale(1); box-shadow: 0 6px 20px rgba(110, 92, 69, 0.3); }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Siluet Gunungan Wayang Emas Transparan -->
-    <img class="bg-overlay" src="https://upload.wikimedia.org/wikipedia/commons/0/06/Gunungan_Wayang.svg" alt="Wayang">
-
-    <div class="cover-wrapper">
-        <div class="border-decor"></div>
-        
-        <div>
-            <p class="title-tasyakuran">Tasyakuran Khitan</p>
-            <h1 class="main-title">Undangan</h1>
-        </div>
-        
-        <div class="recipient-section">
-            <p class="recipient-text">Kepada Yth.<br>Bapak/Ibu/Saudara/i:</p>
-            <div class="recipient-name-box">
-                <p class="recipient-name" id="guest-name">Nama Tamu Undangan</p>
-            </div>
-        </div>
-        
-        <a href="https://liaarga.my.canva.site/revisi/page-2" class="btn-open">Buka Undangan</a>
-    </div>
-
-    <script>
-        // Deteksi Nama Tamu Otomatis dari URL (?to=Nama+Tamu)
-        const urlParams = new URLSearchParams(window.location.search);
-        const namaTamu = urlParams.get('to');
-        if (namaTamu) {
-            document.getElementById('guest-name').innerText = decodeURIComponent(namaTamu);
+            }, 400);
         }
     </script>
 </body>
