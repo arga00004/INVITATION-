@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Tasyakuran Khitan</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f7f4eb; /* Latar belakang krem */
+            color: #4a443c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Aksen Wayang & Gebyok Jawa - Dibuat sangat samar (opacity 0.03) */
+        body::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            /* Menggunakan pola etnik abstrak yang menyerupai siluet gebyok/wayang samar */
+            background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.03; 
+            filter: grayscale(100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .cover-container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 420px;
+            width: 85%;
+            padding: 50px 25px;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(4px);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(74, 68, 60, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        /* Bingkai Tipis Elegan */
+        .cover-container::before {
+            content: "";
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            border: 1px solid rgba(197, 168, 127, 0.3);
+            border-radius: 10px;
+            pointer-events: none;
+        }
+
+        .title-tasyakuran {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #8c7e6b;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        /* Menggunakan Font Gristesy/Script Style */
+        .main-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: #5c4d3c;
+            line-height: 1.2;
+            margin-bottom: 35px;
+            font-weight: 400;
+        }
+
+        .recipient-box {
+            background-color: rgba(240, 235, 223, 0.8);
+            padding: 20px 15px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(197, 168, 127, 0.15);
+        }
+
+        .recipient-text {
+            font-size: 0.8rem;
+            color: #8c7e6b;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        /* Kolom Nama Tamu Otomatis */
+        .recipient-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #3d352a;
+        }
+
+        /* Tombol Buka Undangan */
+        .btn-open {
+            display: inline-block;
+            padding: 14px 35px;
+            background-color: #7a6b58;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(122, 107, 88, 0.2);
+        }
+
+        .btn-open:hover {
+            background-color: #5c4d3c;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(122, 107, 88, 0.35);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cover-container">
+        <p class="title-tasyakuran">Tasyakuran Khitan</p>
+        
+        <h1 class="main-title">Undangan</h1>
+        
+        <div class="recipient-box">
+            <p class="recipient-text">Kepada Yth. Bapak/Ibu/Saudara/i:</p>
+            <p class="recipient-name" id="guest-name">Nama Tamu Undangan</p>
+        </div>
+        
+        <a href="https://liaarga.my.canva.site/revisi/page-2" class="btn-open">Buka Undangan</a>
+    </div>
+
+    <script>
+        /* PENGATURAN NAMA TAMU OTOMATIS:
+          Jika tautan diakses menggunakan parameter '?to=', nama akan berubah secara dinamis.
+          Contoh: websitemu.com/index.html?to=Bapak+Ahmad+Subarjo
+        */
+        const urlParams = new URLSearchParams(window.location.search);
+        const namaTamu = urlParams.get('to');
+        if (namaTamu) {
+            // Mengganti tanda plus (+) atau %20 menjadi spasi normal
+            document.getElementById('guest-name').innerText = decodeURIComponent(namaTamu);
+        }
+    </script>
+</body>
+</html>
