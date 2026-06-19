@@ -16,22 +16,22 @@
             box-sizing: border-box;
         }
 
-        body {
+        body, html {
             font-family: 'Montserrat', sans-serif;
             background-color: #fcf9f2; 
-            display: flex;
-            justify-content: center;
-            align-items: center;
             min-height: 100vh;
+            width: 100%;
             overflow-x: hidden;
         }
 
+        /* TAMPILAN COVER UTAMA */
         .invitation-container {
             position: relative;
             width: 100%;
             max-width: 450px; 
             margin: 0 auto;
-            display: inline-block;
+            display: block;
+            transition: opacity 0.8s ease-in-out;
         }
 
         .bg-image {
@@ -40,7 +40,6 @@
             height: auto;
         }
 
-        /* Posisi Nama Tamu presisi di dalam kotak gambar */
         .guest-name-overlay {
             position: absolute;
             top: 69.5%; 
@@ -62,7 +61,6 @@
             line-height: 1.2;
         }
 
-        /* Tombol BUKA */
         .btn-buka {
             position: absolute;
             top: 84.5%; 
@@ -90,6 +88,24 @@
             background-color: #54433c;
         }
 
+        /* KONTEN CANVA (TERSEMBUNYI SAAT AWAL) */
+        #canva-frame-container {
+            display: none;
+            width: 100%;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            background: #fff;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
         @media (min-width: 450px) {
             #guest-name { font-size: 22px; }
             .btn-buka { padding: 12px 0; font-size: 18px; }
@@ -98,8 +114,8 @@
 </head>
 <body>
 
-    <div class="invitation-container">
-        <!-- Memanggil gambar cover.png -->
+    <!-- Halaman Cover Depan -->
+    <div class="invitation-container" id="cover-page">
         <img src="cover.png" class="bg-image" alt="Undangan Tasyakuran Khitan">
 
         <div class="guest-name-overlay">
@@ -109,7 +125,12 @@
         <button class="btn-buka" onclick="bukaUndanganWithMusic()">BUKA</button>
     </div>
 
-    <!-- Memanggil file lagu.mp3 -->
+    <!-- Wadah Pengunci Isi Canva (Agar musik tidak mati) -->
+    <div id="canva-frame-container">
+        <iframe id="canva-content" src="" allow="autoplay"></iframe>
+    </div>
+
+    <!-- Elemen Audio -->
     <audio id="background-music" loop>
         <source src="lagu.mp3" type="audio/mp3">
     </audio>
@@ -122,12 +143,19 @@
         }
 
         function bukaUndanganWithMusic() {
+            // 1. Putar Musik
             const music = document.getElementById('background-music');
             music.play().catch(error => { console.log(error); });
 
+            // 2. Isi konten iframe dengan link Canva milikmu
+            document.getElementById('canva-content').src = "https://liaarga.my.canva.site/revisi/page-2";
+
+            // 3. Sembunyikan Cover & Munculkan isi Canva dengan mulus
+            document.getElementById('cover-page').style.opacity = '0';
             setTimeout(function() {
-                window.location.href = "https://liaarga.my.canva.site/revisi/page-2";
-            }, 400);
+                document.getElementById('cover-page').style.display = 'none';
+                document.getElementById('canva-frame-container').style.display = 'block';
+            }, 500);
         }
     </script>
 </body>
