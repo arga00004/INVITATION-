@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Undangan Tasyakuran Khitan</title>
     
-    <!-- Google Fonts Premium Look -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -19,31 +18,120 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #fcf9f2; /* Krem hangat premium */
-            color: #4a3f35;
+            background-color: #fcf9f2; 
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            overflow: hidden;
+            overflow-x: hidden;
+        }
+
+        .invitation-container {
             position: relative;
+            width: 100%;
+            max-width: 450px; 
+            margin: 0 auto;
+            display: inline-block;
         }
 
-        /* Background Wayang Gunungan Samar & Estetik */
-        .bg-overlay {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 90%;
-            max-width: 400px;
+        .bg-image {
+            width: 100%;
+            display: block;
             height: auto;
-            opacity: 0.04; /* Sangat samar namun membentuk siluet mewah */
-            pointer-events: none;
-            z-index: 1;
         }
 
-        /* Container Utama Full Screen & Bingkai Emas Tradisional */
+        /* Posisi Nama Tamu presisi di dalam kotak gambar 1000017154.png */
+        .guest-name-overlay {
+            position: absolute;
+            top: 69.5%; 
+            left: 21.5%; 
+            width: 57%;  
+            height: 11.5%; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 10;
+        }
+
+        #guest-name {
+            font-size: 4.8vw; 
+            font-weight: 700;
+            color: #4a3f35; 
+            word-break: break-word;
+            line-height: 1.2;
+        }
+
+        /* Tombol BUKA */
+        .btn-buka {
+            position: absolute;
+            top: 84.5%; 
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+            padding: 3vw 0;
+            background-color: #69554d; 
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 4.2vw;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-align: center;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            text-transform: uppercase;
+            z-index: 10;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-buka:hover {
+            background-color: #54433c;
+        }
+
+        @media (min-width: 450px) {
+            #guest-name { font-size: 22px; }
+            .btn-buka { padding: 12px 0; font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="invitation-container">
+        <!-- Memanggil gambar cover.png yang sudah di-upload ke GitHub -->
+        <img src="cover.png" class="bg-image" alt="Undangan Tasyakuran Khitan">
+
+        <div class="guest-name-overlay">
+            <p id="guest-name">Nama Tamu Undangan</p>
+        </div>
+
+        <button class="btn-buka" onclick="bukaUndanganWithMusic()">BUKA</button>
+    </div>
+
+    <!-- Memanggil file lagu.mp3 yang sudah di-upload ke GitHub -->
+    <audio id="background-music" loop>
+        <source src="lagu.mp3" type="audio/mp3">
+    </audio>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const namaTamu = urlParams.get('to');
+        if (namaTamu) {
+            document.getElementById('guest-name').innerText = decodeURIComponent(namaTamu);
+        }
+
+        function bukaUndanganWithMusic() {
+            const music = document.getElementById('background-music');
+            music.play().catch(error => { console.log(error); });
+
+            setTimeout(function() {
+                window.location.href = "https://liaarga.my.canva.site/revisi/page-2";
+            }, 400); // Memberikan sedikit jeda agar lagu sempat terpicu sistem browser HP
+        }
+    </script>
+</body>
+</html>
         .cover-wrapper {
             position: relative;
             z-index: 2;
